@@ -1,0 +1,15 @@
+<table class="table">
+  <tbody>
+    <tr *ngFor="let product of products">
+      <td class="align-middle">
+        <img src="assets/images/logo.png" height="50" />
+      </td>
+      <td class="align-middle">
+        {{ product.name }} <br />
+        <p>{{ product.description }}</p>
+      </td>
+      <td class="align-middle">{{ product.unitPrice }}</td>
+      <td class="align-middle">{{ product.unitInStock }}</td>
+    </tr>
+  </tbody>
+</table>
