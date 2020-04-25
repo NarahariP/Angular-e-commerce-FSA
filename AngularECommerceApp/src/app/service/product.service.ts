@@ -17,11 +17,21 @@ export class ProductService {
     return this.getProducts(searchUrl);
   }
 
-  getProductCategotyList(): Observable<ProductCategory[]> {
-    const searchUrl = `${this.baseUrl}/product-category`;
+  private getProducts(searchUrl: string): Observable<Product[]> {
     return this.http
-      .get<GetProductCategoryResponse>(searchUrl)
-      .pipe(map((response) => response._embedded.productCategory));
+      .get<GetProductResponse>(searchUrl)
+      .pipe(map((response) => response._embedded.products));
+  }
+
+  getProductListPagination(
+    thePage: number,
+    thePageSize: number,
+    theCategoryId: number
+  ): Observable<GetProductPaginationResponse> {
+    const searchUrl =
+      `${this.baseUrl}/products/search/findByCategoryId?id=${theCategoryId}` +
+      `&page=${thePage}&size=${thePageSize}`;
+    return this.http.get<GetProductPaginationResponse>(searchUrl);
   }
 
   searchProducts(keyword: string): Observable<Product[]> {
@@ -29,11 +39,22 @@ export class ProductService {
     return this.getProducts(searchUrl);
   }
 
-  private getProducts(searchUrl: string): Observable<Product[]> {
-    console.log(searchUrl);
+  searchProductsPagination(
+    thePage: number,
+    thePageSize: number,
+    keyword: string
+  ): Observable<GetProductPaginationResponse> {
+    const searchUrl =
+      `${this.baseUrl}/products/search/findByNameContaining?name=${keyword}` +
+      `&page=${thePage}&size=${thePageSize}`;
+    return this.http.get<GetProductPaginationResponse>(searchUrl);
+  }
+
+  getProductCategotyList(): Observable<ProductCategory[]> {
+    const searchUrl = `${this.baseUrl}/product-category`;
     return this.http
-      .get<GetProductResponse>(searchUrl)
-      .pipe(map((response) => response._embedded.products));
+      .get<GetProductCategoryResponse>(searchUrl)
+      .pipe(map((response) => response._embedded.productCategory));
   }
 
   getProduct(productId: number): Observable<Product> {
@@ -48,8 +69,26 @@ interface GetProductResponse {
   };
 }
 
+interface GetProductPaginationResponse {
+  _embedded: {
+    products: Product[];
+  };
+  page: {
+    size: number;
+    totalElements: number;
+    totalPages: number;
+    number: number;
+  };
+}
+
 interface GetProductCategoryResponse {
   _embedded: {
     productCategory: ProductCategory[];
+  };
+  page: {
+    size: number;
+    totalElements: number;
+    totalPages: number;
+    number: number;
   };
 }
