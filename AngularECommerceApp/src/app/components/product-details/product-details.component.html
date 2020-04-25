@@ -10,12 +10,16 @@
           />
           <h3>{{ product.name }}</h3>
           <div class="price">{{ product.unitPrice }}</div>
-          <a href="#" class="primary-btn">Add to cart</a>
+          <button
+            (click)="addTocart()"
+            class="btn btn-outline-primary btn-sm mt-2 mb-2"
+          >
+            Add to Cart
+          </button>
           <h4>Product Description</h4>
           <p>
             {{ product.description }}
           </p>
-          <a routerLink="/products">Back to Product List</a>
         </div>
       </div>
     </div>
