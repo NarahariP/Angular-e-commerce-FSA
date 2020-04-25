@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/service/product.service';
 import { Product } from 'src/app/model/product';
 import { ActivatedRoute } from '@angular/router';
+import { CartItem } from 'src/app/model/cart-item';
+import { CartService } from 'src/app/service/cart.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list-grid.component.html',
-  //templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
@@ -22,7 +23,8 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cartService: CartService
   ) {}
 
   ngOnInit() {
@@ -97,5 +99,10 @@ export class ProductListComponent implements OnInit {
       .subscribe((response) => {
       this.products = response;
     });*/
+  }
+
+  addTocart(theProduct: Product) {
+    const cartItem = new CartItem(theProduct);
+    this.cartService.addToCart(cartItem);
   }
 }

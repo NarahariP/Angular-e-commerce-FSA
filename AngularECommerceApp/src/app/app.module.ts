@@ -10,6 +10,8 @@ import { ProductService } from './service/product.service';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
 import { SearchProductComponent } from './components/search-product/search-product.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
+import { CartService } from './service/cart.service';
 
 const routes = [
   { path: 'search/:keyword', component: ProductListComponent },
@@ -28,6 +30,7 @@ const routes = [
     ProductCategoryMenuComponent,
     SearchProductComponent,
     ProductDetailsComponent,
+    CartStatusComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,7 @@ const routes = [
     RouterModule.forRoot(routes),
     NgbModule,
   ],
-  providers: [ProductService],
+  providers: [ProductService, CartService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
