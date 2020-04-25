@@ -12,10 +12,12 @@ import { SearchProductComponent } from './components/search-product/search-produ
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { CartStatusComponent } from './components/cart-status/cart-status.component';
 import { CartService } from './service/cart.service';
+import { CartDetailsComponent } from './components/cart-details/cart-details.component';
 
 const routes = [
   { path: 'search/:keyword', component: ProductListComponent },
   { path: 'products/:id', component: ProductDetailsComponent },
+  { path: 'cart-details', component: CartDetailsComponent },
   { path: 'category/:id', component: ProductListComponent },
   { path: 'category', component: ProductListComponent },
   { path: 'products', component: ProductListComponent },
@@ -31,6 +33,7 @@ const routes = [
     SearchProductComponent,
     ProductDetailsComponent,
     CartStatusComponent,
+    CartDetailsComponent,
   ],
   imports: [
     BrowserModule,
