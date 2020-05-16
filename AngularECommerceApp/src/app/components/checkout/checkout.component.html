@@ -1,0 +1,231 @@
+<div class="main-content">
+  <div class="section-content section-content-p30">
+    <div class="container-fluid">
+      <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+        <div formGroupName="customer" class="form-area">
+          <h4>Customer Details</h4>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Firstname"
+                formControlName="firstName"
+              />
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Lastname"
+                formControlName="lastName"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                formControlName="email"
+              />
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Mobile"
+                formControlName="mobile"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div formGroupName="shippingAddress" class="form-area">
+          <h4>Shipping Address</h4>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Street"
+                formControlName="street"
+              />
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="City"
+                formControlName="city"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="State"
+                formControlName="state"
+              />
+            </div>
+            <div class="form-group col">
+              <select class="form-control" formControlName="country">
+                <option value="">--select country--</option>
+                <option value="IN">India</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Zipcode.."
+                formControlName="zipcode"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Landmark.."
+                formControlName="landmark"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group ml-4">
+            <div class="row">
+              <input
+                type="checkbox"
+                class="form-control form-control-sm"
+                (change)="copyShippingAddressToBillingAddress($event)"
+              />
+            </div>
+          </div>
+        </div>
+        <div formGroupName="billingAddress" class="form-area">
+          <h4>Billng Address</h4>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Street"
+                formControlName="street"
+              />
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="City"
+                formControlName="city"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="State"
+                formControlName="state"
+              />
+            </div>
+            <div class="form-group col">
+              <select class="form-control" formControlName="country">
+                <option value="">--select country--</option>
+                <option value="IN">India</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Zipcode.."
+                formControlName="zipcode"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Landmark.."
+                formControlName="landmark"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div formGroupName="cardInfo" class="form-area">
+          <h4>Card Details</h4>
+          <div class="row">
+            <div class="form-group col">
+              <select class="form-control" formControlName="cardType">
+                <option value="">--Type Of Card--</option>
+                <option value="M">Mestro</option>
+                <option value="V">Visa</option>
+                <option value="R">RuPay</option>
+              </select>
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name on card"
+                formControlName="nameOnCard"
+              />
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Card number"
+                formControlName="cardNumber"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="CVV"
+                formControlName="cvv"
+              />
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Expairty Month"
+                formControlName="expiryMonth"
+              />
+            </div>
+            <div class="form-group col">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Expairy Year"
+                formControlName="expiryYear"
+              />
+            </div>
+          </div>
+        </div>
+
+        <input
+          type="submit"
+          class="btn btn-block btn-primary"
+          value="Purchase"
+        />
+      </form>
+    </div>
+  </div>
+</div>
